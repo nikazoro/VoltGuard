@@ -99,9 +99,9 @@ pnpm-debug.log*
 # docker-compose.override.yml
 
 # ==========================
-API_MAPPING.md
 summary.md
 generate_endpoint.py
 api-docs.html
 project_structure.text
 test.py
+model.pkl

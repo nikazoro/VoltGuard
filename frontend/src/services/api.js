@@ -93,7 +93,7 @@ export const profileAPI = {
 export const stationAPI = {
     getAll: (params) => api.get('/stations/', { params }),
     getById: (stationId) => api.get(`/stations/${stationId}`),
-    getMapView: () => api.get('/driver/stations/map'),
+    getMapView: (params) => api.get('/driver/stations/map', { params }),
     getAvailability: (stationId) => api.get(`/stations/${stationId}/availability`),
 };
 

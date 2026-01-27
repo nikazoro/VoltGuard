@@ -1,11 +1,12 @@
 import enum
 from datetime import datetime
-from typing import List
+from typing import Any, List
 
 from sqlalchemy import (
     Boolean,
     String,
     Integer,
+    BigInteger,
     Float,
     DateTime,
     Enum,
@@ -19,6 +20,8 @@ from sqlalchemy.orm import (
     mapped_column,
     relationship,
 )
+from ..db.types import Point  
+from typing import List
 
 from ..db.session import Base
 
@@ -99,7 +102,6 @@ class User(Base):
 # -------------------------
 # STATIONS TABLE
 # -------------------------
-
 class Station(Base):
     __tablename__ = "stations"
 
@@ -130,7 +132,13 @@ class Station(Base):
         Float,
         nullable=False,
     )
-    
+
+    # 🔒 DB-only spatial column (DO NOT SERIALIZE)
+    location: Mapped[Any] = mapped_column(
+        Point(),
+        nullable=False,
+    )
+
     price_per_hour: Mapped[float] = mapped_column(
         Float,
         nullable=False,
@@ -141,7 +149,6 @@ class Station(Base):
         Float,
         nullable=True,
     )
-
 
     status: Mapped[StationStatus] = mapped_column(
         Enum(StationStatus),
@@ -160,13 +167,19 @@ class Station(Base):
     owner: Mapped["User"] = relationship(
         back_populates="stations"
     )
+
     bookings: Mapped[List["Booking"]] = relationship(
         back_populates="station"
     )
+
     telemetry: Mapped[List["StationTelemetry"]] = relationship(
         back_populates="station"
     )
 
+    # 🔑 THIS IS THE FIX
+    __mapper_args__ = {
+        "exclude_properties": {"location"}
+    }
 
 # -------------------------
 # BOOKINGS TABLE

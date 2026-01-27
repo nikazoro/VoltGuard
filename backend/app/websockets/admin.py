@@ -59,7 +59,6 @@ async def admin_alert_ws(websocket: WebSocket):
         await websocket.close(code=1008)
         return
 
-    # ✅ Correct DB session usage
     async with AsyncSessionLocal() as session:
         result = await session.execute(
             select(User).where(User.id == user_id)
@@ -74,7 +73,6 @@ async def admin_alert_ws(websocket: WebSocket):
             await websocket.close(code=1008)
             return
 
-    # Register admin connection
     active_connections.add(websocket)
 
     try:

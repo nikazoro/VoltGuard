@@ -63,25 +63,6 @@ async def update_station_pricing(
 from sqlalchemy import func
 from ....models.models import Booking, BookingStatus
 
-
-# @router.get(
-#     "/revenue",
-#     dependencies=[Depends(require_role(UserRole.station_owner))],
-# )
-# async def owner_revenue(
-#     session: AsyncSession = Depends(get_db_session),
-#     current_user=Depends(get_current_user),
-# ):
-#     result = await session.execute(
-#         select(func.sum(Booking.total_cost))
-#         .join(Station)
-#         .where(
-#             Station.owner_id == current_user.id,
-#             Booking.status == BookingStatus.completed,
-#         )
-#     )
-
-#     return {"total_revenue": result.scalar() or 0}
 @router.get(
     "/revenue",
     dependencies=[Depends(require_role(UserRole.station_owner))]

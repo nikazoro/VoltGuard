@@ -11,6 +11,5 @@ class ProfileRead(BaseModel):
 
 
 class ProfileUpdate(BaseModel):
-    # future-safe: add name, phone later
-    # keep empty for now to avoid fake fields
+    # future-update
     pass

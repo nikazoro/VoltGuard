@@ -18,7 +18,7 @@ async def owner_telemetry_ws(websocket: WebSocket):
 
 async def broadcast_owner_telemetry(payload: dict):
     if not active_connections:
-        return  # ✅ CRITICAL FIX
+        return  
 
     dead = set()
     for ws in active_connections:

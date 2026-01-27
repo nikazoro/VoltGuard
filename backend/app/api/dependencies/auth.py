@@ -5,7 +5,11 @@ from sqlalchemy import select
 
 from ...db.session import get_db_session
 from ...core.security import decode_access_token
-from ...models.models import User
+from ...models.models import User, UserRole
+
+from fastapi import Depends, HTTPException, status
+from typing import Iterable
+
 
 oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl="/api/v1/auth/login/oauth"

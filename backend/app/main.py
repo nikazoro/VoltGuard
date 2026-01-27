@@ -24,7 +24,7 @@ from app.api.v1.endpoints import (
 )
 
 
-# Global service instances (singletons by design)
+# Global service instance
 iot_simulator = IoTSimulatorService(AsyncSessionLocal)
 
 
@@ -63,15 +63,15 @@ app = FastAPI(
 from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
-    "http://localhost:3000",      # React (default)
-    "http://localhost:5173",      # Vite (default)
+    "http://localhost:3000",
+    "http://localhost:5173",
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,     # REPLACE ["*"] with this list
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -5,7 +5,6 @@ import { ToastProvider } from '@/components/ui/Toast';
 import { AuthGuard, PublicRoute } from '@/components/shared/AuthGuard';
 import { Navbar } from '@/components/shared/Navbar';
 
-// Pages (we'll create these next)
 import Login from '@/pages/auth/Login';
 import Register from '@/pages/auth/Register';
 import MapExplorer from '@/pages/driver/MapExplorer';

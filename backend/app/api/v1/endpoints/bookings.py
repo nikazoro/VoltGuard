@@ -81,7 +81,6 @@ async def create_booking(
 
     cost = round(duration_hours * station.price_per_hour, 2)
 
-    # 4. Create booking
     booking = Booking(
         user_id=current_user.id,
         station_id=payload.station_id,
