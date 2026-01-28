@@ -6,6 +6,8 @@
 
 This repository is a **monorepo** containing both the API server and the Client application.
 
+[**Sample Screenshots](https://drive.google.com/drive/folders/1JOwj1rXcDlKBdlXalFaBLU90rQ0ULl69?usp=sharing)**
+
 ---
 
 ## 📂 Repository Structure
