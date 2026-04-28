@@ -1,0 +1,14 @@
+from pydantic import BaseModel
+from datetime import datetime
+
+
+class NotificationRead(BaseModel):
+    id: int
+    title: str
+    message: str
+    type: str
+    is_read: bool
+    created_at: datetime
+    read_at: datetime | None
+
+    model_config = {"from_attributes": True}
